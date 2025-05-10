@@ -16,8 +16,8 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Make the list items display in a row */
-  align-items: center; /* Vertically align items in the navbar */
+  display: flex;  
+  align-items: center;  
 }
 
 nav li {
@@ -26,7 +26,7 @@ nav li {
 
 nav li:last-child {
   margin-right: 0;
-  margin-left: auto; /* Push cart status to the right */
+  margin-left: auto;  
 }
 
 nav a {
