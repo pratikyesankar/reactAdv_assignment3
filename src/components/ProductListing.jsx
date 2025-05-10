@@ -1,30 +1,32 @@
-import { useContext } from "react"
-import { CartContext } from "../context/CartContext"
+import React from "react"
+import { useCart } from "../CartContext"
+
+const products = [
+  { id: 1, name: "Laptop", price: 1200 },
+  { id: 2, name: "Mouse", price: 25 },
+  { id: 3, name: "Keyboard", price: 75 },
+]
 
 const ProductListing = () => {
-  const { addToCart } = useContext(CartContext)
+  const { addToCart } = useCart()
 
-  const products = [
-    { name: "Laptop", price: 999.99 },
-    { name: "Smartphone", price: 499.99 },
-    { name: "Headphones", price: 79.99 },
-    { name: "Tablet", price: 299.99 },
-  ]
+  const handleAddToCart = (product) => {
+    addToCart(product)
+  }
 
   return (
-    <div className="container">
-      <h1 className="heading">Products</h1>
-      <div className="product-grid">
-        {products.map((product, index) => (
-          <div key={index} className="product-card">
-            <h2 className="product-name">{product.name}</h2>
-            <p className="product-price">${product.price.toFixed(2)}</p>
-            <button onClick={() => addToCart(product)} className="add-to-cart">
+    <div>
+      <h2>Products</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name} - ${product.price}
+            <button onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
